@@ -4,10 +4,9 @@
     </head>
     <body>
         <div>
-            <h1><a href="/">ГЛАВНАЯ СТРАНИЦА НЕ МОЕГО САЙТА</a></h1>
+            <h1><a href="/">Вернуться на главную</a></h1>
 
         </div>
-        {% for post in posteki %}
             <div>
                 <h2>
                     <a href="/post/{{ post.id }}">
@@ -17,9 +16,10 @@
                 <p>
                     {{ post.text }}
                 </p>
-            </div>
 
- 
-        {% endfor %}
+                <h2>
+                    Коментарии:
+                </h2>
+            </div>
     </body>
 </html>
