@@ -19,6 +19,21 @@
 
                 <h2>
                     Коментарии:
+                    <div>
+                        {% for comment in comments %}
+
+                        <p>
+                            {{ comment.text }}
+                        </p>
+                        {% endfor %}
+                    </div>
+                    <div>
+                     <h1>New comment</h1>
+                        <form method="POST" class="post-form">{% csrf_token %}
+                            {{ form.as_p }}
+                            <button type="submit" class="save btn btn-default">Запостить анонимно</button>
+                        </form>
+                    </div>
                 </h2>
             </div>
     </body>
