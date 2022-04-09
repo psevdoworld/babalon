@@ -1,10 +1,11 @@
 from django.shortcuts import render
+from rest_framework import viewsets
 
 from blob.forms import CommentsForm
 from blob.models import Post, Comments # <==
 
 # мой проект/blob/views.py
-
+from blob.serialisers import PostSerializer
 
 
 def post_list(request):
@@ -12,6 +13,7 @@ def post_list(request):
     return render(request,
                   'blob/post_list.html',
                   {'posteki':posts})# <==
+
 
 def post_detail(request, pk):
     this_post = Post.objects.get(id=pk)
@@ -31,3 +33,8 @@ def post_detail(request, pk):
                    'comments':comments,
                    'form':form})
     return page
+
+
+class PostViewSet(viewsets.ModelViewSet):
+    queryset = Post.objects.all()
+    serializer_class = PostSerializer
